@@ -1,10 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
     public CharacterController controller;
+
+    private Rigidbody playerRb;
+    public bool gameOver;
+    bool gameHasEnded = false;
 
     public float speed = 12f;
     public float gravity = -9.81f;
@@ -16,6 +21,12 @@ public class PlayerMovement : MonoBehaviour
 
     Vector3 velocity;
     bool isGrounded;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        playerRb = GetComponent<Rigidbody>();
+    }
 
     // Update is called once per frame
     void Update()
@@ -42,5 +53,20 @@ public class PlayerMovement : MonoBehaviour
         velocity.y += gravity * Time.deltaTime;
 
         controller.Move(velocity * Time.deltaTime);
+
+        if (transform.position.y <-10)
+        {
+            if (!gameHasEnded)
+            {
+                gameHasEnded = true;
+                Debug.Log("GameOver");
+                Restart();
+            }
+        }
+    }
+
+    void Restart()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
