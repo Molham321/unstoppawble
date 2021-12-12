@@ -5,27 +5,27 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637748999741452666
-    m_Hash: 1555001091
+      ticks: 637749011841704238
+    m_Hash: 2005373594
   m_LockFileStatus:
     m_FilePath: C:/Users/molha/OneDrive/Desktop/FHS/Semester 5/ITIG/unstopPAWble/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637749003885163811
-    m_Hash: 1802114249
+      ticks: 637749011841714213
+    m_Hash: 3181848944
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_PackageAssets:
   m_Packages:
     m_ResolvedPackages:
-    - packageId: com.unity.cinemachine@2.6.11
+    - packageId: com.unity.cinemachine@2.5.0
       testable: 0
       isDirectDependency: 1
-      version: 2.6.11
+      version: 2.5.0
       source: 1
-      resolvedPath: C:\Users\molha\OneDrive\Desktop\FHS\Semester 5\ITIG\unstopPAWble\Library\PackageCache\com.unity.cinemachine@2.6.11
+      resolvedPath: C:\Users\molha\OneDrive\Desktop\FHS\Semester 5\ITIG\unstopPAWble\Library\PackageCache\com.unity.cinemachine@2.5.0
       assetPath: Packages/com.unity.cinemachine
       name: com.unity.cinemachine
       displayName: Cinemachine
@@ -167,13 +167,13 @@ m_PackageAssets:
       entitlements:
         isAllowed: 1
       isAssetStorePackage: 0
-      datePublishedTicks: 637715450880000000
+      datePublishedTicks: 637151401350000000
       documentationUrl: 
       hasRepository: 1
       repository:
         type: git
-        url: https://github.com/Unity-Technologies/com.unity.cinemachine.git
-        revision: 0eef4802dbe9ea60fc58767471ce4c5ea86632de
+        url: git@github.com:Unity-Technologies/upm-package-cinemachine.git
+        revision: 286219abad772c9ce300105b37cb3d9a5bc799d3
         path: 
     - packageId: com.unity.collab-proxy@1.15.1
       testable: 0
