@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -190,6 +190,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 24121263}
+  gameOver: 0
   speed: 12
   gravity: -19.62
   jumpHeight: 3
@@ -2190,7 +2191,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1472338223}
-  m_LocalRotation: {x: 0.12451124, y: 0.000000034144968, z: -0.000000004284776, w: 0.9922182}
+  m_LocalRotation: {x: 0.12451124, y: -0.000000034144968, z: 0.000000004284776, w: 0.9922182}
   m_LocalPosition: {x: -0.0063266754, y: 6.55, z: 9.75}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -2473,7 +2474,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1851071192}
-  m_LocalRotation: {x: 0.12451124, y: 0.000000034144968, z: -0.000000004284776, w: 0.9922182}
+  m_LocalRotation: {x: 0.12451124, y: -0.000000034144968, z: 0.000000004284776, w: 0.9922182}
   m_LocalPosition: {x: -5.5038233, y: -1.5799999, z: -8.012398}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -2492,6 +2493,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4b29b8ef36881f4fa8e4c018eef327c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mouseSensitivity: 100
+  playerBody: {fileID: 0}
 --- !u!81 &1851071195
 AudioListener:
   m_ObjectHideFlags: 0
@@ -2769,7 +2772,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2121143936}
-  m_LocalRotation: {x: 0.12451125, y: 0.000000017071882, z: -0.0000000021375866, w: 0.9922182}
+  m_LocalRotation: {x: 0.12451125, y: -0.00000001707309, z: 0.0000000021471898, w: 0.9922182}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
