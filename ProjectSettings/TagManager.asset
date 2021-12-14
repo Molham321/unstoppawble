@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Collectible
   - Gameover
+  - Enemy
   layers:
   - Default
   - TransparentFX

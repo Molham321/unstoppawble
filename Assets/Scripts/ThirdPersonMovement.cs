@@ -8,6 +8,10 @@ public class ThirdPersonMovement : MonoBehaviour
     public CharacterController controller;
     public Transform cam;
 
+    public float counter = 3;
+
+    public Animator animator;
+
     public float speed = 12f;
     public float gravity = -9.81f;
     public float jumpHeight = 3f;
@@ -59,13 +63,20 @@ public class ThirdPersonMovement : MonoBehaviour
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+            animator.SetBool("isJumping", true);
+            animator.SetBool("isIdle", false);
+
+        } else if (isGrounded)
+        {
+            animator.SetBool("isJumping", false);
+            animator.SetBool("isIdle", true);
         }
 
         velocity.y += gravity * Time.deltaTime;
 
         controller.Move(velocity * Time.deltaTime);
 
-        if (transform.position.y < -10)
+        if (transform.position.y < -100)
         {
             if (!gameHasEnded)
             {
@@ -78,6 +89,10 @@ public class ThirdPersonMovement : MonoBehaviour
 
     void Restart()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        if(counter > 0)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            counter--;
+        }
     }
 }
