@@ -9,12 +9,12 @@ public class PlayerCollisionDetector : MonoBehaviour
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
+        Debug.Log("Blablabla: " + hit.gameObject.name + " Tag: " + hit.gameObject.tag);
 
         if (hit.gameObject.tag == "Enemy") {
             counter--;
-            Debug.Log("GETROFFEN!");
 
-            if(counter <= 0)
+            if(counter > 0)
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             }

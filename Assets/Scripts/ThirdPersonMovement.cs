@@ -74,7 +74,7 @@ public class ThirdPersonMovement : MonoBehaviour
 
         velocity.y += gravity * Time.deltaTime;
 
-        controller.Move(velocity * Time.deltaTime);
+        controller.Move(velocity * Time.deltaTime); 
 
         if (transform.position.y < -100)
         {
