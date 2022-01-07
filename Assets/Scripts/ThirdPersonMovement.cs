@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,7 @@ public class ThirdPersonMovement : MonoBehaviour
 {
     public CharacterController controller;
     public Transform cam;
+    public AudioClip jumpSound;
 
     public float counter = 3;
 
@@ -15,6 +17,7 @@ public class ThirdPersonMovement : MonoBehaviour
     public float speed = 12f;
     public float gravity = -9.81f;
     public float jumpHeight = 3f;
+    public float jumpForce = 200;
 
     public Transform groundCheck;
     public float groundDistance = 0.4f;
@@ -30,10 +33,26 @@ public class ThirdPersonMovement : MonoBehaviour
     Vector3 velocity;
     bool isGrounded;
 
+    private AudioSource playerAudio;
+
     // Start is called before the first frame update
     void Start()
     {
-        playerRb = GetComponent<Rigidbody>();
+        if (!TryGetComponent<Rigidbody>(out playerRb))
+        {
+            Destroy(this);
+        }
+
+        try
+        {
+            playerRb = GetComponent<Rigidbody>();
+        }
+        catch (Exception e)
+        {
+            Debug.LogError(e);
+            // rigidbody fehlt
+        };
+        playerAudio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -57,14 +76,17 @@ public class ThirdPersonMovement : MonoBehaviour
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
 
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
-            controller.Move(moveDir.normalized * speed * Time.deltaTime);
+            //controller.Move(moveDir.normalized * speed * Time.deltaTime);
+            playerRb.MovePosition(transform.position + moveDir.normalized * speed * Time.deltaTime);
         }
 
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
-            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+            //velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+            playerRb.AddForce(Vector3.up * jumpForce);
             animator.SetBool("isJumping", true);
             animator.SetBool("isIdle", false);
+            playerAudio.PlayOneShot(jumpSound, 0.7f);
 
         } else if (isGrounded)
         {
