@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4519,19 +4519,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: -6988147713389774690, guid: 465905460e9c36745963da875d868d44, type: 3}
   m_PrefabInstance: {fileID: 1361431774}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &945587498
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 945587494}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf520f41c89f09d4483341ad2d2beaeb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  counter: 3
 --- !u!54 &945587499
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4609,11 +4596,11 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 988880224}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.0578086, y: 0.06593559, z: 0.079106554}
-  m_Center: {x: -0.0008939041, y: -0.0027506775, z: -0.050520405}
+  m_Size: {x: 0.06249139, y: 0.06593559, z: 0.079106584}
+  m_Center: {x: 0.001447487, y: -0.0027506775, z: -0.050520424}
 --- !u!54 &988880226
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4630,19 +4617,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &988880227
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 988880224}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf520f41c89f09d4483341ad2d2beaeb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  counter: 3
 --- !u!95 &988880231
 Animator:
   serializedVersion: 3
@@ -6497,19 +6471,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &1339879153
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1339879147}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf520f41c89f09d4483341ad2d2beaeb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  counter: 3
 --- !u!1 &1342815833
 GameObject:
   m_ObjectHideFlags: 0
@@ -11702,22 +11663,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aea3e78bbcc1277478eda5c968fbce6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 1680318643}
-  cam: {fileID: 381042310}
-  jumpSound: {fileID: 8300000, guid: 95c11cf51e3efdc46adb178041580975, type: 3}
-  counter: 3
-  animator: {fileID: 187888759}
-  speed: 23
-  gravity: -33
-  jumpHeight: 5
-  jumpForce: 400
-  groundCheck: {fileID: 933385917}
-  groundDistance: 0.4
   groundMask:
     serializedVersion: 2
     m_Bits: 64
-  turnSmoothTime: 0.09
-  gameOver: 0
+  cam: {fileID: 381042310}
+  groundCheck: {fileID: 933385917}
+  playerRb: {fileID: 1680318647}
+  speed: 25
+  jumpForce: 7
+  animator: {fileID: 187888759}
+  playerAudio: {fileID: 0}
+  jumpSound: {fileID: 8300000, guid: 95c11cf51e3efdc46adb178041580975, type: 3}
 --- !u!114 &1680318642
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11764,6 +11720,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf520f41c89f09d4483341ad2d2beaeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Lebensanzeige1: {fileID: 629451698}
+  Lebensanzeige2: {fileID: 2071611962}
+  Lebensanzeige3: {fileID: 1876660355}
   counter: 3
 --- !u!65 &1680318645
 BoxCollider:
@@ -11889,7 +11848,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!1 &1680547758 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6014503084441653313, guid: 465905460e9c36745963da875d868d44, type: 3}
@@ -13631,7 +13590,7 @@ GameObject:
   - component: {fileID: 2116160343}
   - component: {fileID: 2116160342}
   m_Layer: 5
-  m_Name: Diamond counter
+  m_Name: NoteImage counter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
