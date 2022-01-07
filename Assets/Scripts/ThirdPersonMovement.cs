@@ -94,9 +94,9 @@ public class ThirdPersonMovement : MonoBehaviour
             animator.SetBool("isIdle", true);
         }
 
-        velocity.y += gravity * Time.deltaTime;
+        //velocity.y += gravity * Time.deltaTime;
 
-        controller.Move(velocity * Time.deltaTime); 
+        //controller.Move(velocity * Time.deltaTime); 
 
         if (transform.position.y < -100)
         {
