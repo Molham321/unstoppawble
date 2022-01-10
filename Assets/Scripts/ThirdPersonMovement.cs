@@ -19,6 +19,7 @@ public class ThirdPersonMovement : MonoBehaviour
     private Vector3 playerMovementInput;
 
     private bool gameOver = false;
+
     private float groundDistance = 0.4f;
     private float turnSmoothTime = 0.1f;
     private float turnSmoothVelocity;
@@ -97,7 +98,7 @@ public class ThirdPersonMovement : MonoBehaviour
 
     void Restart()
     {
-        //----------------Restart Game----------------------------------
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        //----------------Restart Game----------------------------------name
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

@@ -6,8 +6,9 @@ using UnityEngine.SceneManagement;
 public class PlayerCollisionDetector : MonoBehaviour
 {
 
-    public GameObject Lebensanzeige1, Lebensanzeige2, Lebensanzeige3;   // hier kann man game over noch schreiben
-    public static int health;
+    [SerializeField] private GameObject Lebensanzeige1, Lebensanzeige2, Lebensanzeige3;   // hier kann man game over noch schreiben
+    private static int health;
+
 
     // Use this for initialization
     private void Start()
@@ -61,7 +62,9 @@ public class PlayerCollisionDetector : MonoBehaviour
 
             if (health <= 0)    // wenn leben = 0 ist wird das spiel neue gestartet || (gameover angezeigt)
             {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                //----------------Restart Game----------------------------------name
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             }
         }
     }
