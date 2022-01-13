@@ -3,7 +3,10 @@ guid: bf520f41c89f09d4483341ad2d2beaeb
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - Lebensanzeige1: {fileID: 919132149155446097, guid: e813bcea6dc313e4db72a303c6a6a5c6, type: 3}
+  - Lebensanzeige2: {fileID: 919132149155446097, guid: e813bcea6dc313e4db72a303c6a6a5c6, type: 3}
+  - Lebensanzeige3: {fileID: 919132149155446097, guid: e813bcea6dc313e4db72a303c6a6a5c6, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
