@@ -8,6 +8,10 @@ public class PlayerCollisionDetector : MonoBehaviour
 
     [SerializeField] private GameObject Lebensanzeige1, Lebensanzeige2, Lebensanzeige3;   // hier kann man game over noch schreiben
     private static int health;
+    public AudioSource damageAudio;
+    public AudioClip damageSound;
+    public AudioClip hitSound;
+
 
 
     // Use this for initialization
@@ -17,6 +21,7 @@ public class PlayerCollisionDetector : MonoBehaviour
         Lebensanzeige1.gameObject.SetActive(true);
         Lebensanzeige2.gameObject.SetActive(true);
         Lebensanzeige3.gameObject.SetActive(true);
+        damageAudio.GetComponent<AudioSource>();
         // hier z.b gameover (false)
     }
 
@@ -59,6 +64,9 @@ public class PlayerCollisionDetector : MonoBehaviour
         if (hit.gameObject.tag == "Enemy")  // wenn player von einem Enemy getrofen wird veriert er ein leben 
         {
             health--;
+            damageAudio.PlayOneShot(hitSound, 0.7f);
+            damageAudio.PlayOneShot(damageSound, 0.7f);
+
 
             if (health <= 0)    // wenn leben = 0 ist wird das spiel neue gestartet || (gameover angezeigt)
             {

@@ -6,10 +6,13 @@ public class Checkpoint : MonoBehaviour
 {
     public GameObject Hundehütte;
     Vector3 spawnPoint;
+    public AudioSource checkpointAudio;
+    public AudioClip checkpointSound;
 
     private void Start()
     {
         spawnPoint = gameObject.transform.position;
+        checkpointAudio = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -24,6 +27,7 @@ public class Checkpoint : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Checkpoint"))
         {
+            checkpointAudio.PlayOneShot(checkpointSound, 0.7f);
             spawnPoint = Hundehütte.transform.position;
         }
     }

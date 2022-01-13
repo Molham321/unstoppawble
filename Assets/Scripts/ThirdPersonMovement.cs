@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -15,6 +16,7 @@ public class ThirdPersonMovement : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private AudioSource playerAudio;
     [SerializeField] private AudioClip jumpSound;
+    [SerializeField] private AudioClip fallSound;
 
     private Vector3 playerMovementInput;
 
@@ -127,10 +129,19 @@ public class ThirdPersonMovement : MonoBehaviour
             {
                 gameOver = true;
                 Debug.Log("GameOver");
+                //StartCoroutine(FellToGameOver());
                 Restart();
             }
         }
     }
+
+    //IEnumerator FellToGameOver()
+    //{
+    //    playerAudio.PlayOneShot(fallSound, 0.7f);
+    //    yield return new WaitForSeconds(2);
+        
+    //}
+
 
     void Restart()
     {
