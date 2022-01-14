@@ -20,8 +20,6 @@ public class ThirdPersonMovement : MonoBehaviour
 
     private Vector3 playerMovementInput;
 
-    private bool gameOver = false;
-
     private float groundDistance = 0.4f;
     private float turnSmoothTime = 0.1f;
     private float turnSmoothVelocity;
@@ -125,13 +123,8 @@ public class ThirdPersonMovement : MonoBehaviour
         //----------------Fell Down GameOver----------------------------------
         if (transform.position.y < -100)
         {
-            if (!gameOver)
-            {
-                gameOver = true;
-                Debug.Log("GameOver");
-                //StartCoroutine(FellToGameOver());
-                Restart();
-            }
+            FindObjectOfType<GameManager>().EndGame();
+            //StartCoroutine(FellToGameOver());
         }
     }
 
@@ -141,11 +134,4 @@ public class ThirdPersonMovement : MonoBehaviour
     //    yield return new WaitForSeconds(2);
         
     //}
-
-
-    void Restart()
-    {
-        //----------------Restart Game----------------------------------name
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    }
 }

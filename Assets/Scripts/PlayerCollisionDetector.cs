@@ -72,7 +72,7 @@ public class PlayerCollisionDetector : MonoBehaviour
             {
                 //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
                 //----------------Restart Game----------------------------------name
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                FindObjectOfType<GameManager>().EndGame();
             }
         }
     }
