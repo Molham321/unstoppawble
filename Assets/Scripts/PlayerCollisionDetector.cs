@@ -61,7 +61,7 @@ public class PlayerCollisionDetector : MonoBehaviour
     {
         Debug.Log("Blablabla: " + hit.gameObject.name + " Tag: " + hit.gameObject.tag);
 
-        if (hit.gameObject.tag == "Enemy")  // wenn player von einem Enemy getrofen wird veriert er ein leben 
+        if (hit.gameObject.tag == "Enemy")  // wenn player von einem Enemy getrofen wird verliert er ein leben 
         {
             health--;
             damageAudio.PlayOneShot(hitSound, 0.7f);
