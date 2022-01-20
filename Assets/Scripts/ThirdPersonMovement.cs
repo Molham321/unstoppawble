@@ -75,6 +75,7 @@ public class ThirdPersonMovement : MonoBehaviour
             Vector3 MoveVector = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
 
             playerRb.MovePosition(transform.position + MoveVector.normalized * speed * Time.deltaTime);
+            //playerRb.AddForce(MoveVector.normalized * speed * Time.deltaTime, ForceMode.Force);
         }
 
         else
