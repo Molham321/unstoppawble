@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using EasyUI.Dialogs;
 
 public class Inventory : MonoBehaviour
 {
@@ -36,6 +37,36 @@ public class Inventory : MonoBehaviour
             {
                 diamonds++;
                 collectibleAudio.PlayOneShot(collectibleSound, 0.7f);
+
+                //// test
+
+                // First Dialog -----------------------------
+                DialogUI.Instance
+                .SetTitle("Message 1")
+                .SetMessage("Hello!")
+                .SetButtonColor(DialogButtonColor.Blue)
+                .OnClose(() => Debug.Log("Closed 1"))
+                .Show();
+
+
+                //// Second Dialog ----------------------------
+                //DialogUI.Instance
+                //.SetTitle("Message 2")
+                //.SetMessage("Hello Again :)")
+                //.SetButtonColor(DialogButtonColor.Magenta)
+                //.SetButtonText("ok")
+                //.OnClose(() => Debug.Log("Closed 2"))
+                //.Show();
+
+
+                //// Third Dialog -----------------------------
+                //DialogUI.Instance
+                //.SetTitle("Message 3")
+                //.SetMessage("Bye!")
+                //.SetFadeInDuration(1f)
+                //.SetButtonColor(DialogButtonColor.Red)
+                //.OnClose(() => Debug.Log("Closed 3"))
+                //.Show();
 
                 if (diamonds == 4)
                 {

@@ -16,7 +16,6 @@ public class GameManager : MonoBehaviour
             GameOverMenu();
         }
     }
-
     void GameOverMenu()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); //name

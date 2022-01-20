@@ -5,60 +5,67 @@ using UnityEngine.SceneManagement;
 
 public class ThirdPersonMovement : MonoBehaviour
 {
-    [SerializeField] private LayerMask groundMask;
     [SerializeField] private Transform cam;
-    [SerializeField] private Transform groundCheck;
-    [SerializeField] private Rigidbody playerRb;
-    [Space]
+
+    [Header("Movement")]
     [SerializeField] private float speed = 20;
-    [SerializeField] private float jumpForce = 200;
-    [Space]
-    [SerializeField] private Animator animator;
+    [SerializeField] private float turnSmoothTime = 0.1f;
+    [SerializeField] private float turnSmoothVelocity;
+
+    [Header("Jumping")]
+    [SerializeField] private float jumpForce = 5f;
+    [SerializeField] private float jumpTimeConter;
+    [SerializeField] private bool isJumping;
+    [SerializeField] public float jumpTime;
+
+    [Header("Ground Detection")]
+    [SerializeField] private Transform groundCheck;
+    [SerializeField] private LayerMask groundMask;
+    [SerializeField] private float groundDistance = 0.4f;
+    [SerializeField] private bool isGrounded;
+
+    [Header("Audio")]
     [SerializeField] private AudioSource playerAudio;
     [SerializeField] private AudioClip jumpSound;
     [SerializeField] private AudioClip fallSound;
 
+    [Header("Animator")]
+    [SerializeField] private Animator animator;
+
     private Vector3 playerMovementInput;
 
-    private float groundDistance = 0.4f;
-    private float turnSmoothTime = 0.1f;
-    private float turnSmoothVelocity;
+    private Rigidbody playerRb;
 
     void Start()
     {
-        if (!TryGetComponent<Rigidbody>(out playerRb))
-        {
-            Destroy(this);
-        }
+        playerRb = GetComponent<Rigidbody>();
+        playerRb.freezeRotation = true;
 
-        try
-        {
-            playerRb = GetComponent<Rigidbody>();
-        } 
-        catch (Exception e) 
-        {
-            Debug.LogError(e);
-        };
         playerAudio = GetComponent<AudioSource>();
     }
 
     void Update()
     {
-        playerMovementInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical")).normalized; 
+        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+
+        playerMovementInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical")).normalized;
 
         MovePlayer();
+        JumpPlayer();
         FellDown();
     }
 
     private void MovePlayer()
     {
+
+
         //----------------Movement----------------------------------
         if (playerMovementInput.magnitude >= 0.1f)
         {
             float targetAngle = Mathf.Atan2(playerMovementInput.x, playerMovementInput.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
 
-            if(Physics.CheckSphere(groundCheck.position, groundDistance, groundMask))
+            if (isGrounded)
             {
                 animator.SetBool("isRunning", true);
                 animator.SetBool("isIdle", false);
@@ -76,27 +83,8 @@ public class ThirdPersonMovement : MonoBehaviour
             animator.SetBool("isIdle", true);
         }
 
-        //----------------Jumping----------------------------------
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            if(Physics.CheckSphere(groundCheck.position, groundDistance, groundMask))
-            {
-                playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-                animator.SetBool("isJumping", true);
-                animator.SetBool("isIdle", false);
-                playerAudio.PlayOneShot(jumpSound, 0.7f);
-            }
-
-        }
-
-        else
-        {
-            animator.SetBool("isJumping", false);
-            animator.SetBool("isIdle", true);
-        }
-
         //----------------Falling----------------------------------
-       if (playerRb.velocity.y < -0.5f)
+        if (playerRb.velocity.y < -0.5f)
         {
             animator.SetBool("isFalling", true);
             animator.SetBool("isIdle", false);
@@ -106,6 +94,57 @@ public class ThirdPersonMovement : MonoBehaviour
             animator.SetBool("isIdle", true);
             animator.SetBool("isFalling", false);
         }
+    }
+
+    private void JumpPlayer()
+    {
+        //----------------Jumping----------------------------------
+
+        if (isGrounded == true && Input.GetKeyDown(KeyCode.Space))
+        {
+            isJumping = true;
+            jumpTimeConter = jumpTime;
+            playerRb.velocity = Vector3.up * jumpForce;
+
+            playerAudio.PlayOneShot(jumpSound, 0.7f);
+        }
+
+        if (isGrounded == true)
+        {
+            animator.SetBool("isJumping", false);
+            animator.SetBool("isIdle", true);
+        }
+        else
+        {
+            animator.SetBool("isJumping", true);
+            animator.SetBool("isIdle", false);
+        }
+
+        if (Input.GetKey(KeyCode.Space) && isJumping == true)
+        {
+            if (jumpTimeConter > 0)
+            {
+                playerRb.velocity = Vector3.up * jumpForce;
+                jumpTimeConter -= Time.deltaTime;
+            }
+            else
+            {
+                isJumping = false;
+            }
+        }
+
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            isJumping = false;
+        }
+
+        if (isJumping == false && !isGrounded)
+        {
+            animator.SetBool("isJumping", false);
+            animator.SetBool("isIdle", true);
+        }
+
+        speed = (!isGrounded) ? 10 : 20;
     }
 
     //----------------Enenmy throwback----------------------------------
@@ -132,6 +171,6 @@ public class ThirdPersonMovement : MonoBehaviour
     //{
     //    playerAudio.PlayOneShot(fallSound, 0.7f);
     //    yield return new WaitForSeconds(2);
-        
+
     //}
 }
