@@ -148,12 +148,12 @@ public class ThirdPersonMovement : MonoBehaviour
     }
 
     //----------------Enenmy throwback----------------------------------
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.tag == "Enemy")
         {
             Vector3 dir = collision.transform.position - transform.position;
-            playerRb.AddForce(dir * 100f);
+            playerRb.AddForce(dir * 50f);
         }
     }
 

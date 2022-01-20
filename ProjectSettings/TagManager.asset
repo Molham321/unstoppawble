@@ -9,6 +9,9 @@ TagManager:
   - Enemy
   - GM
   - Checkpoint
+  - movingPlatform
+  - rotatingPlatform
+  - Bounds
   layers:
   - Default
   - TransparentFX

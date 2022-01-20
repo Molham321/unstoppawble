@@ -3,7 +3,10 @@ guid: f6d1485294bfcac46b22b915dde563ac
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - "Hundeh\xFCtte": {fileID: 919132149155446097, guid: bbd2de4008138c149abfe5cf0c06c8be, type: 3}
+  - checkpointAudio: {instanceID: 0}
+  - checkpointSound: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
