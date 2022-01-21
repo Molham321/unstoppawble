@@ -4,31 +4,25 @@ using UnityEngine;
 
 public class Checkpoint : MonoBehaviour
 {
-    public GameObject Hundehütte;
-    Vector3 spawnPoint;
-    public AudioSource checkpointAudio;
-    public AudioClip checkpointSound;
+    //public AudioSource checkpointAudio;
+    //public AudioClip checkpointSound;
+
+    private GameManager gameManager;
 
     private void Start()
     {
-        spawnPoint = gameObject.transform.position;
-        checkpointAudio = GetComponent<AudioSource>();
-    }
-
-    private void Update()
-    {
-        if (gameObject.transform.position.y < -100f)
-        {
-            gameObject.transform.position = spawnPoint;
-        }
+       // checkpointAudio = GetComponent<AudioSource>();
+        gameManager = GameObject.FindGameObjectWithTag("GM").GetComponent<GameManager>();
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Checkpoint"))
+        if (other.gameObject.CompareTag("Player"))
         {
-            checkpointAudio.PlayOneShot(checkpointSound, 0.7f);
-            spawnPoint = Hundehütte.transform.position;
+            Debug.Log("wir sind daaaaaaaaaaaaaa!");
+            //checkpointAudio.PlayOneShot(checkpointSound, 0.7f);
+            gameManager.lastCheckPointPos = transform.position;
+
         }
     }
 }

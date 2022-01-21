@@ -8,7 +8,7 @@ public class GameOverMenu : MonoBehaviour
 
     public void RestartButton()
     {
-        SceneManager.LoadScene("Hauptszene");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
     }
 
     public void ExitButton()
