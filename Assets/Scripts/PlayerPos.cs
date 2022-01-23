@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerPos : MonoBehaviour
 {
-    private GameManager gameManager;
+    [SerializeField] private GameManager gameManager;
 
     void Start()
     {

@@ -6,19 +6,22 @@ using EasyUI.Dialogs;
 
 public class Inventory : MonoBehaviour
 {
-    public Text diamondConter;
-    public GameObject bridgeToLevel2;
-    public GameObject bridgeToLevel3;
-    public GameObject bridgeToLevel4;
-    public GameObject bridgeToLevel5;
-    public AudioClip collectibleSound;
-    public AudioClip bridgeAppearanceSound;
-    public AudioClip checkpointSound;
+    [SerializeField] private Text diamondConter;
 
-    private int diamonds = 0;
-    private AudioSource collectibleAudio;
-    private AudioSource bridgeAppearanceAudio;
-    private AudioSource checkpointAudio;
+    [SerializeField] private int diamonds = 0;
+
+    [SerializeField] private GameObject bridgeToLevel2;
+    [SerializeField] private GameObject bridgeToLevel3;
+    [SerializeField] private GameObject bridgeToLevel4;
+    [SerializeField] private GameObject bridgeToLevel5;
+
+    [SerializeField] private AudioClip collectibleSound;
+    [SerializeField] private AudioClip bridgeAppearanceSound;
+    [SerializeField] private AudioClip checkpointSound;
+
+    [SerializeField] private AudioSource collectibleAudio;
+    [SerializeField] private AudioSource bridgeAppearanceAudio;
+    [SerializeField] private AudioSource checkpointAudio;
 
     void Start()
     {
@@ -50,35 +53,67 @@ public class Inventory : MonoBehaviour
                 diamonds++;
                 collectibleAudio.PlayOneShot(collectibleSound, 0.7f);
 
-                //// test
-
-                // First Dialog -----------------------------
-                FindObjectOfType<GameManager>().ShowUI();
-                DialogUI.Instance
-                .SetTitle("Message 1")
-                .SetMessage("Hello!")
-                .SetButtonColor(DialogButtonColor.Blue)
-                .OnClose(() => Debug.Log("Closed 1"))
-                .Show();
-                FindObjectOfType<GameManager>().EndUI();
-
                 if (diamonds == 4)
                 {
                     //bridgeToLevel2.SetActive(true);
                     StartCoroutine(UnlockNextLevel(bridgeToLevel2));
+
+                    // First Dialog -----------------------------
+                    FindObjectOfType<GameManager>().ShowUI();
+                    DialogUI.Instance
+                    .SetTitle("Message 1")
+                    .SetMessage("Hello!")
+                    .SetButtonColor(DialogButtonColor.Blue)
+                    .OnClose(() => Debug.Log("Closed 1"))
+                    .Show();
+                    FindObjectOfType<GameManager>().EndUI();
+                    //--------------------------------------------
                 }
                 if (diamonds == 8)
                 {
                     //bridgeToLevel3.SetActive(true);
                     StartCoroutine(UnlockNextLevel(bridgeToLevel3));
+
+                    // First Dialog -----------------------------
+                    FindObjectOfType<GameManager>().ShowUI();
+                    DialogUI.Instance
+                    .SetTitle("Message 1")
+                    .SetMessage("Hello!")
+                    .SetButtonColor(DialogButtonColor.Blue)
+                    .OnClose(() => Debug.Log("Closed 1"))
+                    .Show();
+                    FindObjectOfType<GameManager>().EndUI();
+                    //--------------------------------------------
                 }
                 if (diamonds == 16)
                 {
                     StartCoroutine(UnlockNextLevel(bridgeToLevel4));
+
+                    // First Dialog -----------------------------
+                    FindObjectOfType<GameManager>().ShowUI();
+                    DialogUI.Instance
+                    .SetTitle("Message 1")
+                    .SetMessage("Hello!")
+                    .SetButtonColor(DialogButtonColor.Blue)
+                    .OnClose(() => Debug.Log("Closed 1"))
+                    .Show();
+                    FindObjectOfType<GameManager>().EndUI();
+                    //--------------------------------------------
                 }
                 if (diamonds == 26)
                 {
                     StartCoroutine(UnlockNextLevel(bridgeToLevel5));
+
+                    // First Dialog -----------------------------
+                    FindObjectOfType<GameManager>().ShowUI();
+                    DialogUI.Instance
+                    .SetTitle("Message 1")
+                    .SetMessage("Hello!")
+                    .SetButtonColor(DialogButtonColor.Blue)
+                    .OnClose(() => Debug.Log("Closed 1"))
+                    .Show();
+                    FindObjectOfType<GameManager>().EndUI();
+                    //--------------------------------------------
                 }
             }
             UpdateGUI();

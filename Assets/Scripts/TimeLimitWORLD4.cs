@@ -2,54 +2,81 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class TimeLimitWORLD4 : MonoBehaviour
 {
-    [SerializeField] Timer timer1;
-    [SerializeField] Timer timer2;
-    [SerializeField] Timer timer3;
-    [SerializeField] Timer timer4;
+    [SerializeField] private Timer timer1;
+    [SerializeField] private Timer timer2;
+    [SerializeField] private Timer timer3;
+    [SerializeField] private Timer timer4;
 
-    public GameObject ui;
+    [SerializeField] private GameObject Hundehütte;
+    [SerializeField] private GameObject ui;
 
-    public GameObject textDisplay;
-
-    public int secondsLeft = 10;
-    public bool takingAway = false;
-
-    public Rigidbody playerRb;
-    public GameObject Hundehütte;
-
-    Vector3 spawnPoint;
+    [SerializeField] private Vector3 spawnPoint;
 
     // Start is called before the first frame update
     void Start()
     {
         spawnPoint = Hundehütte.transform.position;
-
-        //timer1
-        //.SetDuration(6)
-        //.OnEnd(() => Debug.Log("Timer 1 ended"))
-        //.Begin();
-
-        //timer2
-        //.SetDuration(10)
-        //.OnEnd(() => Debug.Log("Timer 2 ended"))
-        //.Begin();
-
-        //timer3
-        //.SetDuration(15)
-        //.OnEnd(() => Debug.Log("Timer 3 ended"))
-        //.Begin();
-
-        //timer4
-        //.SetDuration(25)
-        //.OnEnd(() => Debug.Log("Timer 4 ended"))
-        //.Begin();
     }
 
     // Update is called once per frame
     void Update()
+    {
+        TimerPaused();
+        TimerFinished();
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "StartTimer")
+        {
+            ui.SetActive(true);
+
+            timer1
+            .SetDuration(60)
+            .OnEnd(() => Debug.Log("Timer 1 ended"))
+            .Begin();
+
+
+            timer2
+            .SetDuration(60)
+            .OnEnd(() => Debug.Log("Timer 2 ended"))
+            .Begin();
+
+
+            timer3
+            .SetDuration(60)
+            .OnEnd(() => Debug.Log("Timer 3 ended"))
+            .Begin();
+
+            timer4
+            .SetDuration(60)
+            .OnEnd(() => Debug.Log("Timer 4 ended"))
+            .Begin();
+
+        }
+        if (other.gameObject.tag == "StopTimer")
+        {
+            timer1
+            .OnDestroy();
+
+            timer2
+            .OnDestroy();
+
+            timer3
+            .OnDestroy();
+
+            timer4
+            .OnDestroy();
+
+            ui.SetActive(false);
+        }
+    }
+
+    private void TimerPaused()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -60,71 +87,12 @@ public class TimeLimitWORLD4 : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void TimerFinished()
     {
-        if (other.gameObject.tag == "Player")
+        if (timer1.finished)
         {
-            //textDisplay.GetComponent<Text>().text = "00:" + secondsLeft;
-            Debug.Log("wir sind drin!");
-            ui.SetActive(true);
-
-            timer1
-            .SetDuration(6)
-            .OnEnd(() => Debug.Log("Timer 1 ended"))
-            .Begin();
-
-
-            timer2
-            .SetDuration(10)
-            .OnEnd(() => Debug.Log("Timer 2 ended"))
-            .Begin();
-
-
-            timer3
-            .SetDuration(15)
-            .OnEnd(() => Debug.Log("Timer 3 ended"))
-            .Begin();
-
-            timer4
-            .SetDuration(25)
-            .OnEnd(() => Debug.Log("Timer 4 ended"))
-            .Begin();
-
-            if (takingAway == false && secondsLeft > 0)
-            {
-                //StartCoroutine(TimerTake());
-
-                if (takingAway == true && secondsLeft <= 0)
-                {
-                    playerRb.transform.position = spawnPoint;
-                }
-            }
-
+            Debug.Log(timer1.finished);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
-
-    //private void OnTriggerstay(Collider other)
-    //{ 
-    //    if(other.gameObject.tag == "Player")
-    //    {
-    //        if (takingAway == false && secondsLeft > 0)
-    //        {
-    //            StartCoroutine(TimerTake());
-
-    //             if (takingAway == true && secondsLeft <= 0)
-    //            {
-    //                playerRb.transform.position = spawnPoint;
-    //            }
-    //        }
-    //    }
-    //}
-
-    //IEnumerator TimerTake()
-    //{
-    //    takingAway = true;
-    //    yield return new WaitForSeconds(1);
-    //    secondsLeft -= 1;
-    //    textDisplay.GetComponent<Text>().text = "" + secondsLeft;
-    //    takingAway = false;
-    //}
 }

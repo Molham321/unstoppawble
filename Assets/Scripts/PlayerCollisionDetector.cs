@@ -7,12 +7,10 @@ public class PlayerCollisionDetector : MonoBehaviour
 {
 
     [SerializeField] private GameObject Lebensanzeige1, Lebensanzeige2, Lebensanzeige3;   // hier kann man game over noch schreiben
-    private static int health;
-    public AudioSource damageAudio;
-    public AudioClip damageSound;
-    public AudioClip hitSound;
-
-
+    [SerializeField] private static int health;
+    [SerializeField] private AudioSource damageAudio;
+    [SerializeField] private AudioClip damageSound;
+    [SerializeField] private AudioClip hitSound;
 
     // Use this for initialization
     private void Start()
@@ -70,8 +68,7 @@ public class PlayerCollisionDetector : MonoBehaviour
 
             if (health <= 0)    // wenn leben = 0 ist wird das spiel neue gestartet || (gameover angezeigt)
             {
-                //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-                //----------------Restart Game----------------------------------name
+                //----------------Restart Game----------------------------------
                 FindObjectOfType<GameManager>().EndGame();
             }
         }

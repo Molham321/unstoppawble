@@ -3,52 +3,45 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public GameObject popup;
-    bool gameHasEnded = false;
+    [SerializeField] private GameObject popup;
 
-    private static GameManager instance;
-    public Vector3 lastCheckPointPos;
+    [SerializeField] private static GameManager instance;
+    [SerializeField] public Vector3 lastCheckPointPos;
 
+    // Load Game Over menu
     public void EndGame()
     {
-        if (gameHasEnded == false)
-        {
-            gameHasEnded = true;
-            Debug.Log("GameOver");
-            GameOverMenu();
-        }
-    }
-    void GameOverMenu()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); //name
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
+    // close dialog window after 3 seconds
     public void EndUI()
     {
         Invoke("HideUI", 3);
     }
 
+    // close dialog window
     public void HideUI()
     {
         popup.SetActive(false);
     }
 
+    // open dialog window
     public void ShowUI()
     {
         popup.SetActive(true);
     }
 
-    private void Awake()
+    // save Checkpoit
+    public void Awake()
     {
         if(instance == null)
         {
-            Debug.Log("Neu instance!!!!!!!!!!");
             instance = this;
             DontDestroyOnLoad(instance);
         }
         else
         {
-            Debug.Log("instance Destroy!!!!!!!!!!");
             Destroy(gameObject);
         }
     }

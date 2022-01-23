@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Collectible : MonoBehaviour
 {
-    private bool isCollected = false;
+    [SerializeField] private bool isCollected = false;
 
     public bool Collect()
     {

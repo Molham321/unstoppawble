@@ -49,8 +49,6 @@ namespace EasyUI.Dialogs {
 		//Singleton pattern
 		public static DialogUI Instance;
 
-
-
 		void Awake ( ) {
 			Instance = this;
 
@@ -63,43 +61,37 @@ namespace EasyUI.Dialogs {
 			closeUIButton.onClick.AddListener ( Hide );
 		}
 
-		
 		public DialogUI SetTitle ( string title ) {
 			dialog.Title = title;
 			return Instance;
 		}
 
-		
 		public DialogUI SetMessage ( string message ) {
 			dialog.Message = message;
 			return Instance;
 		}
 
-		
 		public DialogUI SetButtonText ( string text ) {
 			dialog.ButtonText = text;
 			return Instance;
 		}
-
 		
 		public DialogUI SetButtonColor ( DialogButtonColor color ) {
 			dialog.ButtonColor = color;
 			return Instance;
 		}
 
-		
 		public DialogUI SetFadeInDuration ( float duration ) {
 			dialog.FadeInDuration = duration;
 			return Instance;
 		}
 
-		
 		public DialogUI OnClose ( UnityAction action ) {
 			dialog.OnClose = action;
 			return Instance;
 		}
 
-		//-------------------------------------
+		//------------------------------------------------------------------
 		
 		public void Show ( ) {
 			dialogsQueue.Enqueue ( dialog );
@@ -109,7 +101,6 @@ namespace EasyUI.Dialogs {
 			if ( !IsActive )
 				ShowNextDialog ( );
 		}
-
 
 		void ShowNextDialog ( ) {
 			tempDialog = dialogsQueue.Dequeue ( );
@@ -123,7 +114,6 @@ namespace EasyUI.Dialogs {
 			IsActive = true;
 			StartCoroutine ( FadeIn ( tempDialog.FadeInDuration ) );
 		}
-
 
 		// Hide dialog
 		public void Hide ( ) {
@@ -140,8 +130,7 @@ namespace EasyUI.Dialogs {
 				ShowNextDialog ( );
 		}
 
-
-		//-------------------------------------
+		//----------------------------------------------------
 
 		IEnumerator FadeIn ( float duration ) {
 			float startTime = Time.time;

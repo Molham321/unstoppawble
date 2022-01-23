@@ -145,7 +145,7 @@ public class ThirdPersonMovement : MonoBehaviour
             animator.SetBool("isIdle", true);
         }
 
-        speed = (!isGrounded) ? 15 : 20;
+        //speed = (!isGrounded) ? 15 : 20;
     }
 
     //----------------Enenmy throwback----------------------------------

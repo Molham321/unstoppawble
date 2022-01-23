@@ -7,6 +7,7 @@ public class Timer : MonoBehaviour {
    [Header ("Timer UI references :")]
    [SerializeField] private Image uiFillImage ;
    [SerializeField] private Text uiText ;
+    public bool finished;
 
    public int Duration { get; private set; }
 
@@ -54,12 +55,12 @@ public class Timer : MonoBehaviour {
    //-- Events ----------------------------------
    public Timer OnBegin (UnityAction action) {
       onTimerBeginAction = action ;
-      return this ;
+        return this ;
    }
 
    public Timer OnChange (UnityAction<int> action) {
       onTimerChangeAction = action ;
-      return this ;
+        return this ;
    }
 
    public Timer OnEnd (UnityAction action) {
@@ -72,13 +73,12 @@ public class Timer : MonoBehaviour {
       return this ;
    }
 
-
-
-
-
    public void Begin () {
       if (onTimerBeginAction != null)
-         onTimerBeginAction.Invoke () ;
+        {
+            onTimerBeginAction.Invoke () ;
+            finished = false;
+        }
 
       StopAllCoroutines () ;
       StartCoroutine (UpdateTimer ()) ;
@@ -105,13 +105,15 @@ public class Timer : MonoBehaviour {
 
    public void End () {
       if (onTimerEndAction != null)
-         onTimerEndAction.Invoke () ;
+        {
+            onTimerEndAction.Invoke();
+            finished = true;
+        }
 
       ResetTimer () ;
    }
 
-
-   private void OnDestroy () {
+    public void OnDestroy () {
       StopAllCoroutines () ;
    }
 }

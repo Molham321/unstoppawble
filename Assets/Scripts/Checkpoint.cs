@@ -4,23 +4,24 @@ using UnityEngine;
 
 public class Checkpoint : MonoBehaviour
 {
-    //public AudioSource checkpointAudio;
-    //public AudioClip checkpointSound;
+    [Header("Audio")]
+    [SerializeField] private AudioSource checkpointAudio;
+    [SerializeField] private AudioClip checkpointSound;
 
-    private GameManager gameManager;
+    [Header("GameManager")]
+    [SerializeField] private GameManager gameManager;
 
     private void Start()
     {
-       // checkpointAudio = GetComponent<AudioSource>();
-        gameManager = GameObject.FindGameObjectWithTag("GM").GetComponent<GameManager>();
+       checkpointAudio = GetComponent<AudioSource>();
+       gameManager = GameObject.FindGameObjectWithTag("GM").GetComponent<GameManager>();
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Checkpoint"))
         {
-            Debug.Log("wir sind daaaaaaaaaaaaaa!");
-            //checkpointAudio.PlayOneShot(checkpointSound, 0.7f);
+            checkpointAudio.PlayOneShot(checkpointSound, 0.7f);
             gameManager.lastCheckPointPos = transform.position;
 
         }
