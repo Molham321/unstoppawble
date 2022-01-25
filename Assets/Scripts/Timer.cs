@@ -55,12 +55,12 @@ public class Timer : MonoBehaviour {
    //-- Events ----------------------------------
    public Timer OnBegin (UnityAction action) {
       onTimerBeginAction = action ;
-        return this ;
+      return this ;
    }
 
    public Timer OnChange (UnityAction<int> action) {
       onTimerChangeAction = action ;
-        return this ;
+      return this ;
    }
 
    public Timer OnEnd (UnityAction action) {
@@ -73,10 +73,14 @@ public class Timer : MonoBehaviour {
       return this ;
    }
 
+
+
+
+
    public void Begin () {
       if (onTimerBeginAction != null)
         {
-            onTimerBeginAction.Invoke () ;
+            onTimerBeginAction.Invoke();
             finished = false;
         }
 
@@ -113,7 +117,8 @@ public class Timer : MonoBehaviour {
       ResetTimer () ;
    }
 
-    public void OnDestroy () {
+
+   public void OnDestroy () {
       StopAllCoroutines () ;
    }
 }
