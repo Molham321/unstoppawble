@@ -8,7 +8,8 @@ public class ThirdPersonMovement : MonoBehaviour
     [SerializeField] private Transform cam;
 
     [Header("Movement")]
-    [SerializeField] private float speed = 20;
+    public float maxSpeed = 30f;
+    [SerializeField] private float speed = 20f;
     [SerializeField] private float turnSmoothTime = 0.1f;
     [SerializeField] private float turnSmoothVelocity;
 
@@ -55,9 +56,17 @@ public class ThirdPersonMovement : MonoBehaviour
         FellDown();
     }
 
+    private void FixedUpdate()
+    {
+        if(playerRb.velocity.magnitude >= maxSpeed)
+        {
+            playerRb.velocity = playerRb.velocity.normalized * maxSpeed;
+        }
+    }
+
     private void MovePlayer()
     {
-
+        
 
         //----------------Movement----------------------------------
         if (playerMovementInput.magnitude >= 0.1f)
@@ -74,8 +83,8 @@ public class ThirdPersonMovement : MonoBehaviour
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
             Vector3 MoveVector = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
 
-            playerRb.MovePosition(transform.position + MoveVector.normalized * speed * Time.deltaTime);
-            //playerRb.AddForce(MoveVector.normalized * speed * Time.deltaTime, ForceMode.Force);
+            playerRb.AddForce(MoveVector.normalized * speed * Time.deltaTime, ForceMode.VelocityChange);
+         
         }
 
         else
