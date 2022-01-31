@@ -4,43 +4,50 @@ using UnityEngine;
 
 public class SnowballENEMY : MonoBehaviour
 {
-    public Rigidbody snowballRb_two;
-    public Rigidbody snowballRb;
+    private Rigidbody snowballRb;
     public Vector3 snowballStartPos;
 
-// Start is called before the first frame update
-void Start()
+    public float minY = 40f;
+    public float spawnDelay = 0f;
+
+    private void Awake()
+    {
+        snowballRb = GetComponent<Rigidbody>();
+    }
+    void Start()
     {
         snowballStartPos = transform.position;
 
-        StartCoroutine("snowballTwoStarter");
+        if(spawnDelay > 0)
+        {
+            StartCoroutine(SnowballStartDelay());
+        }
     }
 
 
     private void Update()
     {
         FellDown();
+        Debug.Log(transform.position.y);
     }
     void FellDown()
     {
-        if (snowballRb.velocity.y < -50f)
+        if (transform.position.y < 40f)
         {
             transform.position = snowballStartPos;
-            Debug.Log(snowballStartPos);
+
             snowballRb.velocity = new Vector3(0, 0, 0);
         }
 
-        if (snowballRb_two.velocity.y < -50f)
-        {
-            transform.position = snowballStartPos;
-            Debug.Log(snowballStartPos);
-            snowballRb_two.velocity = new Vector3(0, 0, 0);
-        }
     }
 
-    IEnumerator snowballTwoStarter()
+    IEnumerator SnowballStartDelay()
     {
-        yield return new WaitForSeconds(15);
-        snowballRb_two.isKinematic = false;
+        snowballRb.isKinematic = true;
+        yield return new WaitForSeconds(spawnDelay);
+        snowballRb.isKinematic = false;
     }
 }
+    
+
+

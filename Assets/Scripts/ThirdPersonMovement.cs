@@ -66,8 +66,6 @@ public class ThirdPersonMovement : MonoBehaviour
 
     private void MovePlayer()
     {
-        
-
         //----------------Movement----------------------------------
         if (playerMovementInput.magnitude >= 0.1f)
         {
