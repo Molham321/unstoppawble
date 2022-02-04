@@ -7634,7 +7634,7 @@ MonoBehaviour:
   m_ShowCameraFrustum: 1
   m_IgnoreTimeScale: 0
   m_WorldUpOverride: {fileID: 0}
-  m_UpdateMethod: 2
+  m_UpdateMethod: 1
   m_BlendUpdateMethod: 1
   m_DefaultBlend:
     m_Style: 1
@@ -7710,10 +7710,11 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 381042306}
-  m_LocalRotation: {x: 0.12451124, y: -0.000000034144968, z: 0.000000004284776, w: 0.9922182}
+  m_LocalRotation: {x: 0.12451124, y: 0.000000012806413, z: -0.0000000016065049, w: 0.9922182}
   m_LocalPosition: {x: 1.8, y: 12, z: 79.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1683724441}
   m_Father: {fileID: 0}
   m_RootOrder: 31
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7825,10 +7826,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 948f4100a11a5c24981795d21301da5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  volumeTrigger: {fileID: 0}
+  volumeTrigger: {fileID: 427378924}
   volumeLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   stopNaNPropagation: 1
   finalBlitToCameraTarget: 0
   antialiasingMode: 0
@@ -9473,8 +9474,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.12974776, y: 0.11990879, z: 0.025997806}
-  m_Center: {x: 0.21478137, y: 1.1865649, z: 0.20313393}
+  m_Size: {x: 0.12974776, y: 0.11990879, z: 0.022103194}
+  m_Center: {x: 0.21478137, y: 1.1865649, z: 0.188}
 --- !u!64 &531802950
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -15168,7 +15169,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1292528851}
-  m_LocalRotation: {x: 0.14253856, y: 0.000000015300794, z: -0.0000000059555734, w: 0.9897893}
+  m_LocalRotation: {x: 0.14253858, y: 0.000000008515345, z: -0.0000000012262865, w: 0.98978925}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -17195,7 +17196,7 @@ Rigidbody:
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 1
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!1 &1553310610
@@ -17420,7 +17421,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1586730595}
-  m_LocalRotation: {x: 0.10649046, y: 0.0000000011982233, z: -0.000000011187951, w: 0.9943138}
+  m_LocalRotation: {x: 0.10649046, y: -0.0000000042771338, z: 4.580787e-10, w: 0.9943138}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -18300,8 +18301,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 381042310}
+  midAirSpeed: 35
+  normalSpeed: 45
   maxSpeed: 30
-  speed: 50
+  speed: 45
   turnSmoothTime: 0.1
   turnSmoothVelocity: 0
   jumpForce: 14
@@ -18318,6 +18321,7 @@ MonoBehaviour:
   jumpSound: {fileID: 8300000, guid: 95c11cf51e3efdc46adb178041580975, type: 3}
   fallSound: {fileID: 8300000, guid: 0dc99424558066d488ce1b303f50c74b, type: 3}
   animator: {fileID: 187888759}
+  playerMovementInput: {x: 0, y: 0, z: 0}
 --- !u!114 &1680318642
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18625,6 +18629,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1683143198}
   m_CullTransparentMesh: 1
+--- !u!1 &1683724440
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1683724441}
+  m_Layer: 7
+  m_Name: CamHolder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1683724441
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1683724440}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 381042310}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &1714210452
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -20390,7 +20424,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1978695598}
-  m_LocalRotation: {x: 0.12451125, y: -0.000000016496621, z: -0.0000000024466391, w: 0.9922182}
+  m_LocalRotation: {x: 0.12451125, y: 0.000000012804366, z: -0.000000001606791, w: 0.9922182}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:

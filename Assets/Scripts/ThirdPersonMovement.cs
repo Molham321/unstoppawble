@@ -8,8 +8,10 @@ public class ThirdPersonMovement : MonoBehaviour
     [SerializeField] private Transform cam;
 
     [Header("Movement")]
+    public float midAirSpeed = 20f;
+    public float normalSpeed = 50f; //needs to be the same as "speed"
     public float maxSpeed = 30f;
-    [SerializeField] private float speed = 20f;
+    [SerializeField] private float speed = 50f;
     [SerializeField] private float turnSmoothTime = 0.1f;
     [SerializeField] private float turnSmoothVelocity;
 
@@ -33,7 +35,7 @@ public class ThirdPersonMovement : MonoBehaviour
     [Header("Animator")]
     [SerializeField] private Animator animator;
 
-    private Vector3 playerMovementInput;
+    public Vector3 playerMovementInput;
 
     private Rigidbody playerRb;
 
@@ -50,6 +52,18 @@ public class ThirdPersonMovement : MonoBehaviour
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
         playerMovementInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical")).normalized;
+
+ 
+
+        if (!isGrounded)
+        {
+            speed = midAirSpeed;
+        }
+
+        if (isGrounded)
+        {
+            speed = normalSpeed;
+        }
 
         MovePlayer();
         JumpPlayer();
@@ -94,6 +108,11 @@ public class ThirdPersonMovement : MonoBehaviour
         //----------------Falling----------------------------------
         if (playerRb.velocity.y < -0.5f)
         {
+            if(!isGrounded && playerMovementInput.magnitude >= 0.1f)
+            {
+                animator.SetBool("isRunning", true);
+            }
+
             animator.SetBool("isFalling", true);
             animator.SetBool("isIdle", false);
         }
@@ -110,6 +129,7 @@ public class ThirdPersonMovement : MonoBehaviour
 
         if (isGrounded == true && Input.GetKeyDown(KeyCode.Space))
         {
+
             isJumping = true;
             jumpTimeConter = jumpTime;
             playerRb.velocity = Vector3.up * jumpForce;
@@ -149,7 +169,7 @@ public class ThirdPersonMovement : MonoBehaviour
         if (isJumping == false && !isGrounded)
         {
             animator.SetBool("isJumping", false);
-            animator.SetBool("isIdle", true);
+            animator.SetBool("isFalling", true);
         }
 
         //speed = (!isGrounded) ? 15 : 20;
