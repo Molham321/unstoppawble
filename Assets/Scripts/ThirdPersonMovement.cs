@@ -8,10 +8,12 @@ public class ThirdPersonMovement : MonoBehaviour
     [SerializeField] private Transform cam;
 
     [Header("Movement")]
-    public float midAirSpeed = 20f;
-    public float normalSpeed = 50f; //needs to be the same as "speed"
+    public float midAirSpeed = 35f;
+    public float normalMidAirSpeed = 35f;
+    public float normalMaxSpeed = 30f; 
     public float maxSpeed = 30f;
-    [SerializeField] private float speed = 50f;
+    public float normalSpeed = 45;  //needs to be the same as "speed"
+    [SerializeField] private float speed = 45f;
     [SerializeField] private float turnSmoothTime = 0.1f;
     [SerializeField] private float turnSmoothVelocity;
 
@@ -24,8 +26,10 @@ public class ThirdPersonMovement : MonoBehaviour
     [Header("Ground Detection")]
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundMask;
+    [SerializeField] private LayerMask slopeMask;
     [SerializeField] private float groundDistance = 0.4f;
     [SerializeField] private bool isGrounded;
+    [SerializeField] private bool isOnSlope;
 
     [Header("Audio")]
     [SerializeField] private AudioSource playerAudio;
@@ -49,7 +53,9 @@ public class ThirdPersonMovement : MonoBehaviour
 
     void Update()
     {
+
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+
 
         playerMovementInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical")).normalized;
 
@@ -69,6 +75,7 @@ public class ThirdPersonMovement : MonoBehaviour
         JumpPlayer();
         FellDown();
     }
+
 
     private void FixedUpdate()
     {
@@ -120,6 +127,32 @@ public class ThirdPersonMovement : MonoBehaviour
         {
             animator.SetBool("isIdle", true);
             animator.SetBool("isFalling", false);
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Slope")
+        {
+            playerRb.drag = 0;
+            playerRb.angularDrag = 0;
+            maxSpeed = 40;
+            midAirSpeed = 40;
+
+            animator.SetBool("isSliding", true);
+            animator.SetBool("isRunning", false);
+            animator.SetBool("isIdle", false);
+        }
+
+        if (collision.gameObject.tag == "Checkpoint")
+        {
+            playerRb.drag = 1;
+            playerRb.angularDrag = 0.05f;
+            normalMaxSpeed = maxSpeed;
+            normalMidAirSpeed = midAirSpeed;
+
+            animator.SetBool("isSliding", false);
+            animator.SetBool("afterSlide", true);
         }
     }
 
