@@ -15,6 +15,7 @@ TagManager:
   - StopTimer
   - StartTimer
   - Slope
+  - snowEnvironment
   layers:
   - Default
   - TransparentFX
