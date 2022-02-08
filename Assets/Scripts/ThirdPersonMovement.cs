@@ -220,8 +220,12 @@ public class ThirdPersonMovement : MonoBehaviour
 
     void FellDown()
     {
-        //----------------Fell Down GameOver----------------------------------
         if (transform.position.y < -100)
+        {
+            playerAudio.PlayOneShot(fallSound, 0.4f);
+        }
+        //----------------Fell Down GameOver----------------------------------
+        if (transform.position.y < -150)
         {
             FindObjectOfType<GameManager>().EndGame();
             //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);

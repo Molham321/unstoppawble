@@ -33,7 +33,7 @@ public class TimeLimitWORLD4 : MonoBehaviour
             ui.SetActive(true);
 
             timer1
-            .SetDuration(60)
+            .SetDuration(180)
             .OnEnd(() => Debug.Log("Timer 1 ended"))
             .Begin();
 
