@@ -22072,7 +22072,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1292528851}
-  m_LocalRotation: {x: 0.000000004770863, y: 0.98978925, z: -0.14253858, w: 0.00000003312892}
+  m_LocalRotation: {x: 0.0000000072234365, y: 0.98978925, z: -0.14253858, w: 0.00000005015961}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -23453,6 +23453,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114085504998786242, guid: 6b78ab3879f6e4f4694f5b2ba700b5c4, type: 3}
+      propertyPath: m_Text
+      value: You found enough notices and therefore a new way has opened for you!
+      objectReference: {fileID: 0}
+    - target: {fileID: 114085504998786242, guid: 6b78ab3879f6e4f4694f5b2ba700b5c4, type: 3}
       propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
@@ -23482,7 +23486,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 224008284630491576, guid: 6b78ab3879f6e4f4694f5b2ba700b5c4, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 224008284630491576, guid: 6b78ab3879f6e4f4694f5b2ba700b5c4, type: 3}
       propertyPath: m_AnchorMax.y
@@ -23490,7 +23494,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 224008284630491576, guid: 6b78ab3879f6e4f4694f5b2ba700b5c4, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 224008284630491576, guid: 6b78ab3879f6e4f4694f5b2ba700b5c4, type: 3}
       propertyPath: m_SizeDelta.x
@@ -25445,7 +25449,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 381042310}
-  midAirSpeed: 65
+  midAirSpeed: 35
   normalMidAirSpeed: 35
   normalMaxSpeed: 30
   maxSpeed: 30
