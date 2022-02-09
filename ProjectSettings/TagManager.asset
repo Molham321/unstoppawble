@@ -16,6 +16,7 @@ TagManager:
   - StartTimer
   - Slope
   - snowEnvironment
+  - GorundSlopes
   layers:
   - Default
   - TransparentFX

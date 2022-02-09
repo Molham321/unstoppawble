@@ -146,7 +146,16 @@ public class ThirdPersonMovement : MonoBehaviour
             animator.SetBool("isIdle", false);
         }
 
-        if (collision.gameObject.tag == "Checkpoint")
+        if (collision.gameObject.tag == "GorundSlope")
+        {
+            playerRb.drag = 0;
+            playerRb.angularDrag = 0;
+            maxSpeed = 40;
+            midAirSpeed = 40;
+
+        }
+
+        if (collision.gameObject.tag == "Checkpoint" || collision.gameObject.tag == "Untagged")
         {
             playerRb.drag = 1;
             playerRb.angularDrag = 0.05f;
