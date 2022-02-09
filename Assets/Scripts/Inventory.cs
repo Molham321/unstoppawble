@@ -40,6 +40,14 @@ public class Inventory : MonoBehaviour
         {
             checkpointAudio.PlayOneShot(checkpointSound, 0.7f);
             Debug.Log("You reached the end. Congratulations!");
+            FindObjectOfType<GameManager>().ShowUI();
+            DialogUI.Instance
+            .SetTitle("You reached the end and found your owner.")
+            .SetMessage("Congratulations!")
+            .SetButtonColor(DialogButtonColor.Blue)
+            .OnClose(() => Debug.Log("Closed 1"))
+            .Show();
+            FindObjectOfType<GameManager>().EndUI();
         }
     }
 
