@@ -69,6 +69,7 @@ public class PlayerCollisionDetector : MonoBehaviour
             if (health <= 0)    // wenn leben = 0 ist wird das spiel neue gestartet || (gameover angezeigt)
             {
                 //----------------Restart Game----------------------------------
+                PlayerPrefs.DeleteKey("Diamonds");
                 FindObjectOfType<GameManager>().EndGame();
             }
         }

@@ -7,7 +7,7 @@ public class Inventory : MonoBehaviour
 {
     [SerializeField] private Text diamondConter;
 
-    [SerializeField] private int diamonds = 0;
+    [SerializeField] public int diamonds;
 
     [SerializeField] private GameObject bridgeToLevel2;
     [SerializeField] private GameObject bridgeToLevel3;
@@ -27,6 +27,9 @@ public class Inventory : MonoBehaviour
         collectibleAudio = GetComponent<AudioSource>();
         bridgeAppearanceAudio = GetComponent<AudioSource>();
         checkpointAudio = GetComponent<AudioSource>();
+
+        diamonds = PlayerPrefs.GetInt("Diamonds");
+        UpdateGUI();
     }
 
     private void OnTriggerEnter(Collider other)
