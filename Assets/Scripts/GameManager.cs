@@ -55,4 +55,14 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    //public void Intro()
+    //{
+    //    Invoke("Startgame", 20);
+    //}
+
+    //public void Startgame()
+    //{
+    //    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    //}
+
 }

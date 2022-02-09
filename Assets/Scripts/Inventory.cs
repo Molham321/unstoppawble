@@ -63,7 +63,7 @@ public class Inventory : MonoBehaviour
                 diamonds++;
                 collectibleAudio.PlayOneShot(collectibleSound, 0.7f);
 
-                if (diamonds == 4)
+                if (diamonds >= 4)
                 {
                     //bridgeToLevel2.SetActive(true);
                     StartCoroutine(UnlockNextLevel(bridgeToLevel2));
@@ -79,7 +79,7 @@ public class Inventory : MonoBehaviour
                     FindObjectOfType<GameManager>().EndUI();
                     //--------------------------------------------
                 }
-                if (diamonds == 8)
+                if (diamonds >= 8)
                 {
                     //bridgeToLevel3.SetActive(true);
                     StartCoroutine(UnlockNextLevel(bridgeToLevel3));
@@ -95,7 +95,7 @@ public class Inventory : MonoBehaviour
                     FindObjectOfType<GameManager>().EndUI();
                     //--------------------------------------------
                 }
-                if (diamonds == 16)
+                if (diamonds >= 16)
                 {
                     StartCoroutine(UnlockNextLevel(bridgeToLevel4));
 
@@ -110,7 +110,7 @@ public class Inventory : MonoBehaviour
                     FindObjectOfType<GameManager>().EndUI();
                     //--------------------------------------------
                 }
-                if (diamonds == 26)
+                if (diamonds >= 26)
                 {
                     StartCoroutine(UnlockNextLevel(bridgeToLevel5));
 

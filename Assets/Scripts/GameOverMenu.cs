@@ -14,6 +14,7 @@ public class GameOverMenu : MonoBehaviour
     // Exit to Menu Game
     public void ExitButton()
     {
+        PlayerPrefs.DeleteKey("Diamonds");
         SceneManager.LoadScene("Menu");
     }
 }
