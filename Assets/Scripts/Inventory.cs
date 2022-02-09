@@ -61,7 +61,7 @@ public class Inventory : MonoBehaviour
                     FindObjectOfType<GameManager>().ShowUI();
                     DialogUI.Instance
                     .SetTitle("Congratulation!")
-                    .SetMessage("you collected 4 proof, a bridge has opened for you. Go to Level 2")
+                    .SetMessage("you collected enough notes! A bridge appeared. Go to Level 2")
                     .SetButtonColor(DialogButtonColor.Blue)
                     .OnClose(() => Debug.Log("Closed 1"))
                     .Show();
@@ -77,7 +77,7 @@ public class Inventory : MonoBehaviour
                     FindObjectOfType<GameManager>().ShowUI();
                     DialogUI.Instance
                     .SetTitle("Congratulation!")
-                    .SetMessage("you collected 4 proof, a bridge has opened for you. Go to Level 3")
+                    .SetMessage("you collected enough notes! A bridge appeared. Go to Level 3")
                     .SetButtonColor(DialogButtonColor.Blue)
                     .OnClose(() => Debug.Log("Closed 1"))
                     .Show();
@@ -92,7 +92,7 @@ public class Inventory : MonoBehaviour
                     FindObjectOfType<GameManager>().ShowUI();
                     DialogUI.Instance
                     .SetTitle("Congratulation!")
-                    .SetMessage("you collected 4 proof, a bridge has opened for you. Go to Level 4")
+                    .SetMessage("you collected enough notes! A bridge appeared. Go to Level 4")
                     .SetButtonColor(DialogButtonColor.Blue)
                     .OnClose(() => Debug.Log("Closed 1"))
                     .Show();
@@ -107,7 +107,7 @@ public class Inventory : MonoBehaviour
                     FindObjectOfType<GameManager>().ShowUI();
                     DialogUI.Instance
                     .SetTitle("Congratulation!")
-                    .SetMessage("you collected 4 proof, a bridge has opened for you. Go to Level 5")
+                    .SetMessage("you collected enough notes! A bridge appeared. Go to Level 5")
                     .SetButtonColor(DialogButtonColor.Blue)
                     .OnClose(() => Debug.Log("Closed 1"))
                     .Show();

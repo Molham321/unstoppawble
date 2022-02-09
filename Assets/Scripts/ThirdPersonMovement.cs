@@ -35,6 +35,7 @@ public class ThirdPersonMovement : MonoBehaviour
     [SerializeField] private AudioSource playerAudio;
     [SerializeField] private AudioClip jumpSound;
     [SerializeField] private AudioClip fallSound;
+    [SerializeField] private AudioSource runAudio;
 
     [Header("Animator")]
     [SerializeField] private Animator animator;
@@ -49,6 +50,7 @@ public class ThirdPersonMovement : MonoBehaviour
         playerRb.freezeRotation = true;
 
         playerAudio = GetComponent<AudioSource>();
+        runAudio = GetComponent<AudioSource>();
     }
 
     void Update()
