@@ -31,6 +31,10 @@ public class Inventory : MonoBehaviour
         diamonds = PlayerPrefs.GetInt("Diamonds");
         UpdateGUI();
     }
+    private void Update()
+    {
+        CheckBridge();
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -63,14 +67,9 @@ public class Inventory : MonoBehaviour
                 diamonds++;
                 collectibleAudio.PlayOneShot(collectibleSound, 0.7f);
 
-                if (diamonds >= 4)
-                {
-                    //bridgeToLevel2.SetActive(true);
-                    StartCoroutine(UnlockNextLevel(bridgeToLevel2));
-                }
-
                 if (diamonds == 4)
-                {// First Dialog -----------------------------
+                {
+                    // First Dialog -----------------------------
                     FindObjectOfType<GameManager>().ShowUI();
                     DialogUI.Instance
                     .SetTitle("Congratulation!")
@@ -80,13 +79,13 @@ public class Inventory : MonoBehaviour
                     .Show();
                     FindObjectOfType<GameManager>().EndUI();
                     //-------------------------------------------- }
+
+                    //bridgeToLevel2.SetActive(true);
+                    StartCoroutine(UnlockNextLevel(bridgeToLevel2));
                 }
-                
+
                 if (diamonds == 8)
                 {
-                    //bridgeToLevel3.SetActive(true);
-                    StartCoroutine(UnlockNextLevel(bridgeToLevel3));
-
                     // First Dialog -----------------------------
                     FindObjectOfType<GameManager>().ShowUI();
                     DialogUI.Instance
@@ -97,10 +96,11 @@ public class Inventory : MonoBehaviour
                     .Show();
                     FindObjectOfType<GameManager>().EndUI();
                     //--------------------------------------------
+                    StartCoroutine(UnlockNextLevel(bridgeToLevel3));
                 }
+
                 if (diamonds == 16)
                 {
-                    StartCoroutine(UnlockNextLevel(bridgeToLevel4));
 
                     // First Dialog -----------------------------
                     FindObjectOfType<GameManager>().ShowUI();
@@ -112,11 +112,11 @@ public class Inventory : MonoBehaviour
                     .Show();
                     FindObjectOfType<GameManager>().EndUI();
                     //--------------------------------------------
+                    StartCoroutine(UnlockNextLevel(bridgeToLevel4));
                 }
+
                 if (diamonds == 26)
                 {
-                    StartCoroutine(UnlockNextLevel(bridgeToLevel5));
-
                     // First Dialog -----------------------------
                     FindObjectOfType<GameManager>().ShowUI();
                     DialogUI.Instance
@@ -127,6 +127,7 @@ public class Inventory : MonoBehaviour
                     .Show();
                     FindObjectOfType<GameManager>().EndUI();
                     //--------------------------------------------
+                    StartCoroutine(UnlockNextLevel(bridgeToLevel5));
                 }
             }
             UpdateGUI();
@@ -143,5 +144,27 @@ public class Inventory : MonoBehaviour
         yield return new WaitForSeconds(1);
         bridge.SetActive(true);
         bridgeAppearanceAudio.PlayOneShot(bridgeAppearanceSound, 0.7f);
+        UpdateGUI();
+    }
+
+    void CheckBridge()
+    {
+
+        if (diamonds >= 4)
+        {
+            bridgeToLevel2.SetActive(true);
+        }
+        if (diamonds >= 8)
+        {
+            bridgeToLevel3.SetActive(true);
+        }
+        if (diamonds >= 16)
+        {
+            bridgeToLevel4.SetActive(true);
+        }
+        if (diamonds >= 26)
+        {
+            bridgeToLevel5.SetActive(true);
+        }
     }
 }
