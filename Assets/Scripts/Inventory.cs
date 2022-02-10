@@ -67,19 +67,22 @@ public class Inventory : MonoBehaviour
                 {
                     //bridgeToLevel2.SetActive(true);
                     StartCoroutine(UnlockNextLevel(bridgeToLevel2));
+                }
 
-                    // First Dialog -----------------------------
+                if (diamonds == 4)
+                {// First Dialog -----------------------------
                     FindObjectOfType<GameManager>().ShowUI();
                     DialogUI.Instance
                     .SetTitle("Congratulation!")
-                    .SetMessage("you collected enough notes! A bridge appeared. Go to Level 2")
+                    .SetMessage("You collected enough notes! A bridge appeared. Go to Level 2")
                     .SetButtonColor(DialogButtonColor.Blue)
                     .OnClose(() => Debug.Log("Closed 1"))
                     .Show();
                     FindObjectOfType<GameManager>().EndUI();
-                    //--------------------------------------------
+                    //-------------------------------------------- }
                 }
-                if (diamonds >= 8)
+                
+                if (diamonds == 8)
                 {
                     //bridgeToLevel3.SetActive(true);
                     StartCoroutine(UnlockNextLevel(bridgeToLevel3));
@@ -88,14 +91,14 @@ public class Inventory : MonoBehaviour
                     FindObjectOfType<GameManager>().ShowUI();
                     DialogUI.Instance
                     .SetTitle("Congratulation!")
-                    .SetMessage("you collected enough notes! A bridge appeared. Go to Level 3")
+                    .SetMessage("You collected enough notes! A bridge appeared. Go to Level 3")
                     .SetButtonColor(DialogButtonColor.Blue)
                     .OnClose(() => Debug.Log("Closed 1"))
                     .Show();
                     FindObjectOfType<GameManager>().EndUI();
                     //--------------------------------------------
                 }
-                if (diamonds >= 16)
+                if (diamonds == 16)
                 {
                     StartCoroutine(UnlockNextLevel(bridgeToLevel4));
 
@@ -103,14 +106,14 @@ public class Inventory : MonoBehaviour
                     FindObjectOfType<GameManager>().ShowUI();
                     DialogUI.Instance
                     .SetTitle("Congratulation!")
-                    .SetMessage("you collected enough notes! A bridge appeared. Go to Level 4")
+                    .SetMessage("You collected enough notes! A bridge appeared. Go to Level 4")
                     .SetButtonColor(DialogButtonColor.Blue)
                     .OnClose(() => Debug.Log("Closed 1"))
                     .Show();
                     FindObjectOfType<GameManager>().EndUI();
                     //--------------------------------------------
                 }
-                if (diamonds >= 26)
+                if (diamonds == 26)
                 {
                     StartCoroutine(UnlockNextLevel(bridgeToLevel5));
 
@@ -118,7 +121,7 @@ public class Inventory : MonoBehaviour
                     FindObjectOfType<GameManager>().ShowUI();
                     DialogUI.Instance
                     .SetTitle("Congratulation!")
-                    .SetMessage("you collected enough notes! A bridge appeared. Go to Level 5")
+                    .SetMessage("You collected enough notes! A bridge appeared. Go to Level 5")
                     .SetButtonColor(DialogButtonColor.Blue)
                     .OnClose(() => Debug.Log("Closed 1"))
                     .Show();

@@ -7,7 +7,7 @@ PhysicMaterial:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Dog
-  dynamicFriction: 1
+  dynamicFriction: 0.84
   staticFriction: 0.05
   bounciness: 0
   frictionCombine: 0
