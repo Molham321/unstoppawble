@@ -66,6 +66,7 @@ public class Inventory : MonoBehaviour
             {
                 diamonds++;
                 collectibleAudio.PlayOneShot(collectibleSound, 0.7f);
+                UpdateGUI();
 
                 if (diamonds == 4)
                 {
@@ -73,7 +74,7 @@ public class Inventory : MonoBehaviour
                     FindObjectOfType<GameManager>().ShowUI();
                     DialogUI.Instance
                     .SetTitle("Congratulation!")
-                    .SetMessage("You collected enough notes! A bridge appeared. Go to Level 2")
+                    .SetMessage("You collected enough notes! A bridge appeared.")
                     .SetButtonColor(DialogButtonColor.Blue)
                     .OnClose(() => Debug.Log("Closed 1"))
                     .Show();
@@ -90,7 +91,7 @@ public class Inventory : MonoBehaviour
                     FindObjectOfType<GameManager>().ShowUI();
                     DialogUI.Instance
                     .SetTitle("Congratulation!")
-                    .SetMessage("You collected enough notes! A bridge appeared. Go to Level 3")
+                    .SetMessage("You collected enough notes! A bridge appeared.")
                     .SetButtonColor(DialogButtonColor.Blue)
                     .OnClose(() => Debug.Log("Closed 1"))
                     .Show();
@@ -106,7 +107,7 @@ public class Inventory : MonoBehaviour
                     FindObjectOfType<GameManager>().ShowUI();
                     DialogUI.Instance
                     .SetTitle("Congratulation!")
-                    .SetMessage("You collected enough notes! A bridge appeared. Go to Level 4")
+                    .SetMessage("You collected enough notes! A bridge appeared.")
                     .SetButtonColor(DialogButtonColor.Blue)
                     .OnClose(() => Debug.Log("Closed 1"))
                     .Show();
@@ -121,7 +122,7 @@ public class Inventory : MonoBehaviour
                     FindObjectOfType<GameManager>().ShowUI();
                     DialogUI.Instance
                     .SetTitle("Congratulation!")
-                    .SetMessage("You collected enough notes! A bridge appeared. Go to Level 5")
+                    .SetMessage("You collected enough notes! A bridge appeared.")
                     .SetButtonColor(DialogButtonColor.Blue)
                     .OnClose(() => Debug.Log("Closed 1"))
                     .Show();
@@ -130,7 +131,6 @@ public class Inventory : MonoBehaviour
                     StartCoroutine(UnlockNextLevel(bridgeToLevel5));
                 }
             }
-            UpdateGUI();
         }
     }
 
