@@ -28,7 +28,6 @@ public class SnowballENEMY : MonoBehaviour
     private void Update()
     {
         FellDown();
-        Debug.Log(transform.position.y);
     }
     void FellDown()
     {
